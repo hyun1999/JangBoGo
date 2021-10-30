@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="left"
+    android:layout_marginTop="50dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:layout_marginLeft="30dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/basic_font"
+        android:textSize="50dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="장보Go!"
+        android:fontFamily="@font/basic_font"
+        android:layout_marginLeft="30dp"
+        android:textColor="#000000"
+        android:textSize="50dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="장보고 이용을 위해"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#787878"
+        android:fontFamily="@font/basic_font"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="개인정보를 입력해주세요"
+        android:layout_marginLeft="30dp"
+        android:textColor="#787878"
+        android:fontFamily="@font/basic_font"
+        android:textSize="25dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="55dp"
+                android:textColor="#787878"
+                android:fontFamily="@font/basic_font"
+                android:textSize="25dp"/>
+
+            <EditText
+                android:id="@+id/name_Et"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/login_radius"
+                android:hint="이름을 입력해주세요"
+                android:paddingLeft="10dp"
+                android:textColorHint="#787878" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/basic_font"
+                android:text="Phone Number"
+                android:textColor="#787878"
+                android:textSize="25dp" />
+
+            <EditText
+                android:id="@+id/phone_Et"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/login_radius"
+                android:hint="전화번호를 입력해주세요"
+                android:paddingLeft="10dp"
+                android:textColorHint="#787878" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="55dp"
+                android:textColor="#787878"
+                android:fontFamily="@font/basic_font"
+                android:textSize="25dp"/>
+
+            <EditText
+                android:id="@+id/email_Et"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/login_radius"
+                android:hint="이메일을 입력해주세요"
+                android:paddingLeft="10dp"
+                android:textColorHint="#787878" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="55dp"
+                android:textColor="#787878"
+                android:fontFamily="@font/basic_font"
+                android:textSize="25dp"/>
+
+            <EditText
+                android:id="@+id/password_Et"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/login_radius"
+                android:hint="비밀번호를 입력해주세요"
+                android:paddingLeft="10dp"
+                android:textColorHint="#787878" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사업자 등록 번호"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="55dp"
+                android:textColor="#787878"
+                android:fontFamily="@font/basic_font"
+                android:textSize="25dp"/>
+
+            <EditText
+                android:id="@+id/sellnum_Et"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/login_radius"
+                android:hint="사업자 등록 번호를 입력해주세요"
+                android:paddingLeft="10dp"
+                android:textColorHint="#787878" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="* 판매자는 사업자 등록 번호를 입력해주세요"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="55dp"
+                android:textColor="#787878"
+                android:fontFamily="@font/basic_font"
+                android:textSize="11dp"/>
+        </LinearLayout>
+    </ScrollView>
+    <TextView
+        android:id="@+id/submit_btn"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/textview_radius"
+        android:clickable="true"
+        android:fontFamily="@font/basic_font"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="Submit"
+        android:textColor="#ffffff"
+        android:textSize="25dp" />
+
+</LinearLayout>
