@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "844306618370",
+    "project_id": "jangbogo-f422a",
+    "storage_bucket": "jangbogo-f422a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844306618370:android:9d093e0a44816f8a1caf1b",
+        "android_client_info": {
+          "package_name": "com.example.jangbogo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844306618370-etr3jgvasck8j2ckt5vtutd7nh11lilj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd2HJ_FvfpqppGGQjA2eypUP5cBHcIXQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844306618370-etr3jgvasck8j2ckt5vtutd7nh11lilj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
