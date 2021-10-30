@@ -170,7 +170,7 @@
         </LinearLayout>
     </ScrollView>
     <TextView
-        android:id="@+id/submit_btn"
+        android:id="@+id/submit_Tv"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
