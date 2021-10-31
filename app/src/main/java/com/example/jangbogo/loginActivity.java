@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class loginActivity extends AppCompatActivity {
 
@@ -47,28 +48,33 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        //로그인 버튼이 눌리면
+        //로그인t 버튼이 눌리면
         mLoginBtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(loginActivity.this,"로그인 버튼",Toast.LENGTH_SHORT).show();
-//                String email = mEmailText.getText().toString().trim();
-//                String pwd = mPasswordText.getText().toString().trim();
-//                firebaseAuth.signInWithEmailAndPassword(email,pwd)
-//                        .addOnCompleteListener(loginActivity.this, new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if(task.isSuccessful()){
-//                                    Intent intent = new Intent(loginActivity.this, MainActivity.class);
-//                                    startActivity(intent);
-//
-//                                }else{
-//                                    Toast.makeText(loginActivity.this,"로그인 오류",Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-//
+                String email = mEmailText.getText().toString().trim();
+                String pwd = mPasswordText.getText().toString().trim();
+
+
+                firebaseAuth.signInWithEmailAndPassword(email,pwd)
+                        .addOnCompleteListener(loginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                                    if(user != null){
+                                        Toast.makeText(loginActivity.this,"로그인 성공",Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+                                    }
+
+
+                                }else{
+                                    Toast.makeText(loginActivity.this,"로그인 오류",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="30dp"
     android:gravity="left"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -14,13 +14,13 @@
         android:layout_height="60dp"
         android:gravity="center">
 
-        <ImageButton
+        <ImageView
+            android:id="@+id/home_Iv"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:background="@null"
             android:layout_gravity="center"
-            android:backgroundTint="#FDF3D7"
-            android:foreground="@drawable/house"
-            android:foregroundTint="#FFC107" />
+            android:src="@drawable/house" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,22 +32,39 @@
             android:textColor="#000000"
             android:textSize="50dp" />
 
-        <ImageButton
+        <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:backgroundTint="@drawable/textview_radius"
-            android:foreground="@drawable/edit"
-            android:foregroundTint="#FFC107" />
+            android:src="@drawable/edit"
+            android:id="@+id/board_Iv" />
 
     </LinearLayout>
 
-    <SearchView
-        android:layout_width="270dp"
-        android:layout_height="40dp"
-        android:background="@drawable/login_radius"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <EditText
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:background="@drawable/login_radius"
+            android:singleLine="true"
+            android:paddingLeft="10dp"
+            android:hint="검색어를 입력해주세요"/>
+
+        <Button
+            android:layout_marginLeft="-20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검색"
+            android:background="@drawable/textview_radius">
+
+
+        </Button>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="350dp"
@@ -61,31 +78,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
-        <TextView
+        <ImageView
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/house"
-            android:gravity="center"/>
+            android:gravity="center" />
 
-        <TextView
+        <ImageView
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/textview_radius"
-            android:gravity="center"/>
+            android:gravity="center" />
 
-        <TextView
+        <ImageView
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/login_radius"
-            android:gravity="center"/>
+            android:gravity="center" />
 
-        <TextView
+        <ImageView
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/house"
-            android:gravity="center"/>
+            android:gravity="center" />
 
 
     </LinearLayout>
