@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               //게시판 버튼 기능
+                Intent intent = new Intent(getApplicationContext(),BoardActivity.class);
+                startActivity(intent);
             }
         });
     }

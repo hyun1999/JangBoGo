@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="검색"
-            android:background="@drawable/textview_radius">
+            android:background="@drawable/yellow_radius">
 
 
         </Button>
@@ -73,7 +73,7 @@
         android:layout_gravity="center"
         android:paddingTop="20dp"
         android:paddingLeft="20dp"
-        android:background="@drawable/textview_radius"/>
+        android:background="@drawable/yellow_radius"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -90,7 +90,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:background="@drawable/textview_radius"
+            android:background="@drawable/yellow_radius"
             android:gravity="center" />
 
         <ImageView
