@@ -35,11 +35,11 @@ public class RegisterActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance(); //접근권한
         mDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
-        email_Et = findViewById(R.id.email_Et);
-        password_Et = findViewById(R.id.password_Et);
-        name_Et = findViewById(R.id.name_Et);
-        phone_Et = findViewById(R.id.phone_Et);
-        sellnum_Et = findViewById(R.id.sellnum_Et);
+        email_Et = (EditText) findViewById(R.id.email_Et);
+        password_Et = (EditText) findViewById(R.id.password_Et);
+        name_Et = (EditText) findViewById(R.id.name_Et);
+        phone_Et = (EditText) findViewById(R.id.phone_Et);
+        sellnum_Et = (EditText) findViewById(R.id.sellnum_Et);
 
         submit_Tv = (TextView) findViewById(R.id.submit_Tv);
         submit_Tv.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +51,8 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!email.equals("") && !password.equals("")) {
                     // 이메일과 비밀번호가 공백이 아닌 경우
                     createUser(email, password);
-                } else if (email.equals("")) {
                     // 이메일과 비밀번호가 공백인 경우
+                } else if (email.equals("")) {
                     Toast.makeText(RegisterActivity.this, "이메일을 입력하세요.", Toast.LENGTH_LONG).show();
                 } else if (password.equals("")) {
                     // 이메일과 비밀번호가 공백인 경우
