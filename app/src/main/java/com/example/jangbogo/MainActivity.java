@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true); //리사이클러뷰 기존성능 강화
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>(); //User 객체를 담을 어레이 리스트
+        arrayList = new ArrayList<>(); //list 객체를 담을 어레이 리스트
 
         database = FirebaseDatabase.getInstance();//파이어베이스 데이터베이스 연동
 
