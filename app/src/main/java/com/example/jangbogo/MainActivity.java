@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();//파이어베이스 데이터베이스 연동
 
-
-
         DatabaseReference databaseReference = database.getReference("Users"); // 데이터베이스 연결
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

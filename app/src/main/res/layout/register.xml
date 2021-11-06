@@ -75,6 +75,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/login_radius"
                 android:hint="이름을 입력해주세요"
+                android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:textColorHint="#787878" />
 
@@ -95,6 +96,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/login_radius"
                 android:hint="전화번호를 입력해주세요"
+                android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:textColorHint="#787878" />
 
@@ -115,6 +117,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/login_radius"
                 android:hint="이메일을 입력해주세요"
+                android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:textColorHint="#787878" />
 
@@ -135,6 +138,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/login_radius"
                 android:hint="비밀번호를 입력해주세요"
+                android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:textColorHint="#787878" />
 
@@ -155,6 +159,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/login_radius"
                 android:hint="사업자 등록 번호를 입력해주세요"
+                android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:textColorHint="#787878" />
 

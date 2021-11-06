@@ -51,6 +51,7 @@
             android:layout_height="40dp"
             android:background="@drawable/login_radius"
             android:hint="검색어를 입력해주세요"
+            android:maxLines="1"
             android:paddingLeft="10dp"
             android:singleLine="true" />
 
@@ -59,6 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="-20dp"
             android:background="@drawable/yellow_radius"
+            android:fontFamily="@font/basic_font"
+            android:textSize="20dp"
             android:text="검색">
 
 

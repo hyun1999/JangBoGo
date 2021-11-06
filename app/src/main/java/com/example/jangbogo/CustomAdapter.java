@@ -33,8 +33,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         holder.tv_name.setText(arrayList.get(position).getStore_name());
-        holder.tv_item.setText(arrayList.get(position).getStore_item());
-        holder.tv_phone.setText(arrayList.get(position).getStore_phone());
+        holder.tv_intro.setText(arrayList.get(position).getStore_intro());
     }
 
     @Override
@@ -44,14 +43,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
         TextView tv_name;
-        TextView tv_item;
-        TextView tv_phone;
+        TextView tv_intro;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             this.tv_name = itemView.findViewById(R.id.tv_name);
-            this.tv_item = itemView.findViewById(R.id.tv_item);
-            this.tv_phone = itemView.findViewById(R.id.tv_phone);
-        }
+            this.tv_intro = itemView.findViewById(R.id.tv_intro);}
     }
 }
