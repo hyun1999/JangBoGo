@@ -17,8 +17,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
@@ -99,8 +101,23 @@ public class BoardActivity extends AppCompatActivity {
     private void createPost(String store_name, String store_address, String store_phone, String store_intro, String store_item, String store_time) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
-        String[] sellNum = new String[1];
         DatabaseReference mData = FirebaseDatabase.getInstance().getReference("Users");
+        String sellNum = String.valueOf(mData.child(uid).child("sellNum").getDatabase());
+        Toast.makeText(BoardActivity.this, "sellNum: " + sellNum, Toast.LENGTH_SHORT).show();
+
+        mData.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot snap : snapshot.getChildren()){
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         mData.child(uid).child("sellNum").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -108,9 +125,9 @@ public class BoardActivity extends AppCompatActivity {
                 if (!task.isSuccessful()) {
                     Log.e("firebase", "Error getting data", task.getException());
                 } else {
-                    sellNum[0] = String.valueOf(task.getResult().getValue());
-                    Toast.makeText(BoardActivity.this, "sellNum: " + sellNum[0], Toast.LENGTH_SHORT).show();
-                    if (sellNum[0] != null && user != null) {
+                    //sellNum[0] = String.valueOf(task.getResult().getValue());
+
+                    if (sellNum != null && user != null) {
 
                         //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
                         HashMap<Object, String> hashMap = new HashMap<>();
@@ -122,7 +139,10 @@ public class BoardActivity extends AppCompatActivity {
                         hashMap.put("store_item", store_item);
                         hashMap.put("store_time", store_time);
 
+                        //
                         mDatabase.child(uid).child("Board").setValue(hashMap);
+                        //
+
                         Toast.makeText(BoardActivity.this, "글 작성 성공", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(BoardActivity.this, MainActivity.class);
                         startActivity(intent);

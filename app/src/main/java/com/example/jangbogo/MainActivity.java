@@ -45,17 +45,36 @@ public class MainActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();//파이어베이스 데이터베이스 연동
 
-        DatabaseReference databaseReference = database.getReference("Users"); // 데이터베이스 연결
+
+
+        //DatabaseReference databaseReference = database.getReference().child("Board"); // 데이터베이스 연결
+        DatabaseReference databaseReference = database.getReference("Users");
+
+        //보드를 추가할 때마다 리셋됨 세연 ㅅㄱ
+        //int temp = 0;
+        //String str = String.valueOf(temp);
+        //databaseReference.child(str);
+        //temp++;
+        //
+
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            int i;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //파이어베이스 데이터베이스의 데이터를 받아오는곳
                 arrayList.clear(); //초기화
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    list List = snapshot1.getValue(list.class); //만들어뒀던 list 객체에 데이터 담기
-                    arrayList.add(List); //담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼준비
+                    //String str1 = snapshot1.getValue().toString();
+                    //System.out.println(str1);
+                    list List = snapshot1.child("Board").getValue(list.class); //만들어뒀던 list 객체에 데이터 담기
+                    if(List != null){
+                        arrayList.add(List); //담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼준비
+                        i = 0;
+                    }
                 }
-                adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침
+                adapter.notifyItemInserted(i); // 리스트 저장 및 새로고침
+                i++;
+                //databaseReference.child("Board").setValue(null);
             }
 
             @Override
