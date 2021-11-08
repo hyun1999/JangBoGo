@@ -13,10 +13,13 @@
         android:theme="@style/Theme.Jangbogo"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".SplashActivity">
+            android:name=".StoreActivity"
+            android:exported="true" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
