@@ -1,8 +1,14 @@
 package com.example.jangbogo;
 
-public class list {
+import java.io.Serializable;
+
+public class list implements Serializable {
     private String store_name;
     private String store_intro;
+    private String store_address;
+    private String store_item;
+    private String store_phone;
+    private String store_time;
 
     public list() {
     }
@@ -21,5 +27,37 @@ public class list {
 
     public void setStore_intro(String store_intro) {
         this.store_intro = store_intro;
+    }
+
+    public String getStore_address() {
+        return store_address;
+    }
+
+    public void setStore_address(String store_address) {
+        this.store_address = store_address;
+    }
+
+    public String getStore_item() {
+        return store_item;
+    }
+
+    public void setStore_item(String store_item) {
+        this.store_item = store_item;
+    }
+
+    public String getStore_phone() {
+        return store_phone;
+    }
+
+    public void setStore_phone(String store_phone) {
+        this.store_phone = store_phone;
+    }
+
+    public String getStore_time() {
+        return store_time;
+    }
+
+    public void setStore_time(String store_time) {
+        this.store_time = store_time;
     }
 }
