@@ -22,7 +22,7 @@
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
             android:background="@null"
-            android:src="@drawable/house" />
+            android:src="@drawable/home" />
 
         <TextView
             android:layout_width="wrap_content"

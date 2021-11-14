@@ -66,7 +66,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         public void onClick(View v) {
             int pos = getAdapterPosition();
 
-            Toast.makeText(v.getContext(), "click", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(v.getContext() , StoreActivity.class);
             intent.putExtra("item", getItem(pos));
             v.getContext().startActivity(intent);
