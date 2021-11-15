@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Jangbogo"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".OrderActivity"
+            android:exported="true" />
+        <activity
             android:name=".StoreActivity"
             android:exported="true" />
         <activity android:name=".SplashActivity">

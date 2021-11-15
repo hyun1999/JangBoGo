@@ -1,27 +1,29 @@
 package com.example.jangbogo;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ImageView home_Iv, board_Iv;
@@ -30,7 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<list> arrayList;
+    private ArrayList<list> resultList;
     private FirebaseDatabase database;
+    private Button mSearchBtn;
+    private EditText mSearchField;
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+    private DatabaseReference resultRef = FirebaseDatabase.getInstance().getReference("Users/Board");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +50,18 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>(); //list 객체를 담을 어레이 리스트
 
-        database = FirebaseDatabase.getInstance();//파이어베이스 데이터베이스 연동
+        mSearchField = (EditText) findViewById(R.id.edit_search);
+        mSearchBtn = (Button) findViewById(R.id.search_btn);
 
-        DatabaseReference databaseReference = database.getReference("Users");
+        mSearchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String searchText = mSearchField.getText().toString().trim();
+                search(searchText);
+            }
+        });
+
+
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             int i;
@@ -73,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-
-
         //홈버튼 게시판버튼
         home_Iv = (ImageView) findViewById(R.id.home_Iv);
         board_Iv = (ImageView) findViewById(R.id.board_Iv);
@@ -94,5 +108,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    //검색기능(순차 탐색)
+    private void search(String searchText) {
+        Toast.makeText(getApplicationContext(), "search", Toast.LENGTH_SHORT).show();
+        resultList = new ArrayList<>();
+        if(searchText.length() == 0){
+            resultList.addAll(arrayList);
+        }
+        else{
+            for(list List: arrayList){
+                if(List.getStore_name().contains(searchText)){
+                    resultList.add(List);
+                }
+            }
+        }
+
+        CustomAdapter resultAdapter = new CustomAdapter(resultList, this);
+        recyclerView.removeAllViewsInLayout();
+        recyclerView.setAdapter(resultAdapter);
+
     }
 }

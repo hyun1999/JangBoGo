@@ -3,6 +3,7 @@ package com.example.jangbogo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class StoreActivity extends AppCompatActivity {
     ImageView home_intro_Iv;
 
-    private TextView store_tv_name, store_tv_intro, store_tv_item, store_tv_address, store_tv_phone, store_tv_time;
+    private TextView store_tv_name, store_tv_intro, store_tv_item, store_tv_address, store_tv_phone, store_tv_time, Order_tv;
     private FirebaseDatabase database;
     private list item;
 
@@ -35,12 +36,23 @@ public class StoreActivity extends AppCompatActivity {
         store_tv_address = (TextView) findViewById(R.id.store_tv_address);
         store_tv_phone = (TextView) findViewById(R.id.store_tv_phone);
         store_tv_time = (TextView) findViewById(R.id.store_tv_time);
+        Order_tv = (TextView) findViewById(R.id.Order_tv);
 
         database = FirebaseDatabase.getInstance();//파이어베이스 데이터베이스 연동
         DatabaseReference databaseReference = database.getReference("Users");
 
         getItemDetail();
         setItem();
+
+        //order버튼
+        Order_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //홈버튼 기능
+                Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+                startActivity(intent);
+            }
+        });
 
         home_intro_Iv = (ImageView) findViewById(R.id.home_intro_Iv);
         home_intro_Iv.setOnClickListener(new View.OnClickListener() {
@@ -92,8 +104,8 @@ public class StoreActivity extends AppCompatActivity {
                 store_tv_time.setText(time);
             }
         }
-
     }
+
 
 
 }

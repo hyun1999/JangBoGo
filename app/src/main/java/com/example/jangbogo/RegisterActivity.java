@@ -19,7 +19,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private EditText email_Et, password_Et, name_Et, phone_Et, sellnum_Et;
