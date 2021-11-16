@@ -69,8 +69,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             Intent intent = new Intent(v.getContext() , StoreActivity.class);
             intent.putExtra("item", getItem(pos));
             v.getContext().startActivity(intent);
-
         }
+
     }
 
 

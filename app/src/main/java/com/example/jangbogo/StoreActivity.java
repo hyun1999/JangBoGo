@@ -48,8 +48,8 @@ public class StoreActivity extends AppCompatActivity {
         Order_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //홈버튼 기능
                 Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+                intent.putExtra("store_name", item.getStore_name());
                 startActivity(intent);
             }
         });

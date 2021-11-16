@@ -79,4 +79,3 @@ public class loginActivity extends AppCompatActivity {
         });
     }
 }
-//https://call203.tistory.com/28
