@@ -174,7 +174,7 @@
                 android:gravity="center"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="배달 비대면 결제하기"
+                android:text="배달 대면 결제하기"
                 android:textColor="#ffffff"
                 android:textSize="25dp" />
             <TextView
@@ -202,7 +202,7 @@
                 android:gravity="center"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="포장 비대면 결제하기"
+                android:text="포장 대면 결제하기"
                 android:textColor="#ffffff"
                 android:textSize="25dp" />
 
