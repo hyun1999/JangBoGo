@@ -157,7 +157,6 @@
                 android:fontFamily="@font/basic_font"
                 android:maxLines="1"
                 android:text="흥정여부"
-                android:textColor="#E53935"
                 android:textSize="15dp" />
 
             <TextView

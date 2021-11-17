@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +25,7 @@ public class StoreActivity extends AppCompatActivity {
     private TextView store_tv_name, store_tv_intro, store_tv_item, store_tv_address, store_tv_phone, store_tv_time, store_tv_sale, Order_tv;
     private FirebaseDatabase database;
     private list item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,26 +61,26 @@ public class StoreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //홈버튼 기능
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    public void getItemDetail(){
+    public void getItemDetail() {
         Intent intent = getIntent();
-        if(intent != null){
+        if (intent != null) {
             Bundle bld = intent.getExtras();
 
             Object obj = bld.get("item");
-            if(obj != null && obj instanceof list){
+            if (obj != null && obj instanceof list) {
                 this.item = (list) obj;
             }
         }
     }
 
-    public void setItem(){
-        if(this.item != null){
+    public void setItem() {
+        if (this.item != null) {
             String name = this.item.getStore_name();
             String intro = this.item.getStore_intro();
             String item = this.item.getStore_item();
@@ -86,30 +88,27 @@ public class StoreActivity extends AppCompatActivity {
             String phone = this.item.getStore_phone();
             String time = this.item.getStore_time();
             String sale = this.item.getStore_sale();
-            if(name != null){
+            if (name != null) {
                 store_tv_name.setText(name);
             }
-            if(intro != null){
+            if (intro != null) {
                 store_tv_intro.setText(intro);
             }
-            if(item != null){
+            if (item != null) {
                 store_tv_item.setText(item);
             }
-            if(address != null){
+            if (address != null) {
                 store_tv_address.setText(address);
             }
-            if(phone != null){
+            if (phone != null) {
                 store_tv_phone.setText(phone);
             }
-            if(time != null){
+            if (time != null) {
                 store_tv_time.setText(time);
             }
-            if(sale != null){
-                store_tv_sale.setText("* 이가게는 "+sale+"한 가게입니다.");
+            if (sale != null) {
+                store_tv_sale.setText("* 이가게는 " + sale + "한 가게입니다.");
             }
         }
     }
-
-
-
 }
