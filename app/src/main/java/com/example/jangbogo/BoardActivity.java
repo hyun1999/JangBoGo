@@ -163,9 +163,9 @@ public class BoardActivity extends AppCompatActivity {
                         hashMap.put("store_item", store_item);
                         hashMap.put("store_time", store_time);
                         if(store_sale =="true"){
-                            hashMap.put("store_sale", "흥정가능");
+                            hashMap.put("store_sale", "흥정 가능");
                         } else{
-                            hashMap.put("store_sale", "흥정불가");
+                            hashMap.put("store_sale", "흥정 불가능");
                         }
 
 

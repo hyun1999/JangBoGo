@@ -149,6 +149,16 @@
                 android:padding="5dp"
                 android:text="시간"
                 android:textSize="20dp" />
+            <TextView
+                android:id="@+id/store_tv_sale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/basic_font"
+                android:maxLines="1"
+                android:text="흥정여부"
+                android:textColor="#E53935"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/Order_tv"
