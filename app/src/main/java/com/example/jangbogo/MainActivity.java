@@ -62,16 +62,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             int i;
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //파이어베이스 데이터베이스의 데이터를 받아오는곳
                 arrayList.clear(); //초기화
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     list List = snapshot1.child("Board").getValue(list.class); //만들어뒀던 list 객체에 데이터 담기
-                    if(List != null){
+                    if (List != null) {
                         arrayList.add(List); //담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼준비
                         i = 0;
                     }
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //홈버튼 기능
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //게시판 버튼 기능
-                Intent intent = new Intent(getApplicationContext(),BoardActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BoardActivity.class);
                 startActivity(intent);
             }
         });
@@ -114,12 +114,11 @@ public class MainActivity extends AppCompatActivity {
     private void search(String searchText) {
         Toast.makeText(getApplicationContext(), "search", Toast.LENGTH_SHORT).show();
         resultList = new ArrayList<>();
-        if(searchText.length() == 0){
+        if (searchText.length() == 0) {
             resultList.addAll(arrayList);
-        }
-        else{
-            for(list List: arrayList){
-                if(List.getStore_name().contains(searchText)){
+        } else {
+            for (list List : arrayList) {
+                if (List.getStore_name().contains(searchText)) {
                     resultList.add(List);
                 }
             }
@@ -128,6 +127,5 @@ public class MainActivity extends AppCompatActivity {
         CustomAdapter resultAdapter = new CustomAdapter(resultList, this);
         recyclerView.removeAllViewsInLayout();
         recyclerView.setAdapter(resultAdapter);
-
     }
 }

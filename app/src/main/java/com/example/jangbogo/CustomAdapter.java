@@ -28,7 +28,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         CustomViewHolder holder = new CustomViewHolder(view);
         return holder;
     }
@@ -37,28 +37,30 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         holder.tv_name.setText(arrayList.get(position).getStore_name());
         holder.tv_intro.setText(arrayList.get(position).getStore_intro());
+        holder.tv_sale.setText(arrayList.get(position).getStore_sale());
     }
-
 
     @Override
     public int getItemCount() {
         return (arrayList != null ? arrayList.size() : 0);
     }
 
-    public list getItem(int position){
+    public list getItem(int position) {
         return arrayList != null ? arrayList.get(position) : null;
     }
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView tv_name;
         public TextView tv_intro;
+        public TextView tv_sale;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener((View.OnClickListener) this);
             this.tv_name = (TextView) itemView.findViewById(R.id.tv_name);
             this.tv_intro = (TextView) itemView.findViewById(R.id.tv_intro);
+            this.tv_sale = (TextView) itemView.findViewById(R.id.tv_sale);
         }
 
         //아이템 클릭시 화면 전환
@@ -66,12 +68,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         public void onClick(View v) {
             int pos = getAdapterPosition();
 
-            Intent intent = new Intent(v.getContext() , StoreActivity.class);
+            Intent intent = new Intent(v.getContext(), StoreActivity.class);
             intent.putExtra("item", getItem(pos));
             v.getContext().startActivity(intent);
         }
-
     }
-
-
 }

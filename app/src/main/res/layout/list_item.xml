@@ -17,7 +17,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:orientation="vertical">
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
@@ -25,6 +27,19 @@
                 android:text="가게 이름"
                 android:textSize="25dp"
                 android:layout_margin="5dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right">
+                    <TextView
+                        android:id="@+id/tv_sale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="흥정여부"
+                        android:textSize="15dp"
+                        android:layout_margin="5dp"/>
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_intro"

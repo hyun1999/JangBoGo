@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,10 +29,18 @@ import java.util.HashMap;
 public class BoardActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    private EditText store_name_Et, store_address_Et, store_phone_Et, store_intro_Et, store_item_Et, store_time_Et;
+    private EditText store_name_Et;
+    private EditText store_address_Et;
+    private EditText store_phone_Et;
+    private EditText store_intro_Et;
+    private EditText store_item_Et;
+    private EditText store_time_Et;
+    private CheckBox store_sale_Cb;
     private TextView submit_Tv;
     private DatabaseReference mDatabase;
     ImageView home_Iv;
+
+    String resultText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +56,19 @@ public class BoardActivity extends AppCompatActivity {
         store_intro_Et = (EditText) findViewById(R.id.store_intro_Et);
         store_item_Et = (EditText) findViewById(R.id.store_item_Et);
         store_time_Et = (EditText) findViewById(R.id.store_time_Et);
+        store_sale_Cb = (CheckBox) findViewById(R.id.store_sale_Cb);
+
+        CheckBox checkBox = (CheckBox) findViewById(R.id.store_sale_Cb) ;
+        checkBox.setOnClickListener(new CheckBox.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((CheckBox)v).isChecked() == true) {
+                    resultText = "true";
+                } else {
+                    resultText = "false";
+                }
+            }
+        }) ;
 
         home_Iv = (ImageView) findViewById(R.id.home_Iv);
         home_Iv.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +80,7 @@ public class BoardActivity extends AppCompatActivity {
             }
         });
 
+
         submit_Tv = (TextView) findViewById(R.id.submit_Tv);
         submit_Tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,11 +91,11 @@ public class BoardActivity extends AppCompatActivity {
                 String store_intro = store_intro_Et.getText().toString().trim();
                 String store_item = store_item_Et.getText().toString().trim();
                 String store_time = store_time_Et.getText().toString().trim();
-
+                String store_sale = resultText;
                 if (!store_name.equals("") && !store_address.equals("") && !store_phone.equals("")
                         && !store_intro.equals("") && !store_item.equals("") && !store_time.equals("")) {
                     // 모든 사항이 공백이 아닐경우
-                    createPost(store_name, store_address, store_phone, store_intro, store_item, store_time);
+                    createPost(store_name, store_address, store_phone, store_intro, store_item, store_time, store_sale);
                 } else if (store_name.equals("")) {
                     // 가게 이름이 공백인 경우
                     Toast.makeText(BoardActivity.this, "가게이름을 입력하세요.", Toast.LENGTH_LONG).show();
@@ -98,7 +122,7 @@ public class BoardActivity extends AppCompatActivity {
         });
     }
 
-    private void createPost(String store_name, String store_address, String store_phone, String store_intro, String store_item, String store_time) {
+    private void createPost(String store_name, String store_address, String store_phone, String store_intro, String store_item, String store_time, String store_sale) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
         DatabaseReference mData = FirebaseDatabase.getInstance().getReference("Users");
@@ -108,7 +132,7 @@ public class BoardActivity extends AppCompatActivity {
         mData.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snap : snapshot.getChildren()){
+                for (DataSnapshot snap : snapshot.getChildren()) {
 
                 }
             }
@@ -138,6 +162,12 @@ public class BoardActivity extends AppCompatActivity {
                         hashMap.put("store_intro", store_intro);
                         hashMap.put("store_item", store_item);
                         hashMap.put("store_time", store_time);
+                        if(store_sale =="true"){
+                            hashMap.put("store_sale", "흥정가능");
+                        } else{
+                            hashMap.put("store_sale", "흥정불가");
+                        }
+
 
                         //
                         mDatabase.child(uid).child("Board").setValue(hashMap);
