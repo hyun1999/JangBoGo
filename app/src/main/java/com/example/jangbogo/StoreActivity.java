@@ -52,6 +52,8 @@ public class StoreActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
                 intent.putExtra("store_name", item.getStore_name());
+                intent.putExtra("store_item", item.getStore_item());
+                intent.putExtra("store_sale", item.getStore_sale());
                 startActivity(intent);
             }
         });

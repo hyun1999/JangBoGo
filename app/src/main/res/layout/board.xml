@@ -132,7 +132,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/login_radius"
                     android:hint="가게 소개를 입력해주세요"
-                    android:lines="5"
+                    android:elegantTextHeight="true"
                     android:paddingLeft="10dp"
                     android:textColorHint="#787878" />
 
@@ -153,7 +153,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/login_radius"
                     android:hint="판매 상품을 입력해주세요"
-                    android:lines="10"
+                    android:elegantTextHeight="true"
                     android:paddingLeft="10dp"
                     android:textColorHint="#787878" />
 
