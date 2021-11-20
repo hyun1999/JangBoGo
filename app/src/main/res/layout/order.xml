@@ -207,6 +207,7 @@
                 android:textSize="20dp" />
 
             <TextView
+                android:id="@+id/ship_untact_tv"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -223,35 +224,39 @@
                 android:textSize="25dp" />
 
             <TextView
+                android:id="@+id/ship_ontact_tv"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
                 android:background="@drawable/yellow_radius"
                 android:clickable="true"
                 android:fontFamily="@font/basic_font"
                 android:gravity="center"
-                android:paddingTop="8dp"
                 android:paddingBottom="8dp"
+                android:paddingTop="8dp"
                 android:text="배달 대면 결제하기"
                 android:textColor="#ffffff"
                 android:textSize="25dp" />
 
             <TextView
+                android:id="@+id/pack_untact_tv"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/yellow_radius"
                 android:clickable="true"
                 android:fontFamily="@font/basic_font"
                 android:gravity="center"
-                android:paddingTop="8dp"
                 android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+
                 android:text="포장 비대면 결제하기"
                 android:textColor="#ffffff"
                 android:textSize="25dp" />
 
             <TextView
+                android:id="@+id/pack_ontact_tv"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

@@ -11,16 +11,22 @@
         <entry key="..\:/jangbogo/app/src/main/res/drawable/yellow_radius.xml" value="0.12760416666666666" />
         <entry key="..\:/jangbogo/app/src/main/res/drawable/yellow_radius2.xml" value="0.12760416666666666" />
         <entry key="..\:/jangbogo/app/src/main/res/font/basic_font.xml" value="0.24814814814814815" />
+        <entry key="..\:/jangbogo/app/src/main/res/layout/activity_card_splash.xml" value="0.13125" />
+        <entry key="..\:/jangbogo/app/src/main/res/layout/activity_direct_splash.xml" value="0.11927083333333334" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/activity_login.xml" value="0.12864583333333332" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/jangbogo/app/src/main/res/layout/activity_pay_question.xml" value="0.11927083333333334" />
+        <entry key="..\:/jangbogo/app/src/main/res/layout/activity_sale_splash.xml" value="0.176" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/activity_splash.xml" value="0.24114583333333334" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/activity_store.xml" value="0.264" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/board.xml" value="0.264" />
+        <entry key="..\:/jangbogo/app/src/main/res/layout/card_finish_splash.xml" value="0.13125" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/list_item.xml" value="0.2" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/login.xml" value="0.2526041666666667" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/main.xml" value="0.264" />
-        <entry key="..\:/jangbogo/app/src/main/res/layout/order.xml" value="0.16" />
+        <entry key="..\:/jangbogo/app/src/main/res/layout/order.xml" value="0.264" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/register.xml" value="0.20555555555555555" />
+        <entry key="..\:/jangbogo/app/src/main/res/layout/sale_finish_splash.xml" value="0.13125" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/sign_up.xml" value="0.2526041666666667" />
         <entry key="..\:/jangbogo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24814814814814815" />
       </map>

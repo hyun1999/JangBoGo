@@ -2,6 +2,7 @@ package com.example.jangbogo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +13,12 @@ import android.widget.Toast;
 
 public class OrderActivity extends AppCompatActivity {
     ImageView home_Order_Iv;
-    private TextView Order_name_tv,store_tv_item,store_tv_sale,store_item_view,sale_price_tv;
+    private TextView Order_name_tv,store_tv_item,store_tv_sale,store_item_view,sale_price_tv,ship_untact_tv,ship_ontact_tv,pack_untact_tv,pack_ontact_tv;
     private EditText sale_price_et;
     private list item1;
+    public static Context context_order;
+    public int ontact = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +31,15 @@ public class OrderActivity extends AppCompatActivity {
         sale_price_tv = (TextView) findViewById(R.id.sale_price_tv);
         sale_price_et = (EditText) findViewById(R.id.sale_price_et);
 
+        ship_untact_tv = (TextView) findViewById(R.id.ship_untact_tv);
+        ship_ontact_tv = (TextView) findViewById(R.id.ship_ontact_tv);
+        pack_untact_tv = (TextView) findViewById(R.id.pack_untact_tv);
+        pack_ontact_tv = (TextView) findViewById(R.id.pack_ontact_tv);
+
+        context_order = this;
+
         getItemDetail();
         setItem();
-
 
         Intent intent = getIntent();
         String store_name = intent.getStringExtra("store_name");
@@ -47,7 +57,60 @@ public class OrderActivity extends AppCompatActivity {
             sale_price_et.setVisibility(View.GONE);
         }
 
-
+        //배달 비대면결제 클릭시
+        ship_untact_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(store_sale.equals("흥정 불가능")){
+                    Intent intent = new Intent(getApplicationContext(), card_Ready_SplashActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+        //배달 대면결제 클릭시
+        ship_ontact_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(store_sale.equals("흥정 불가능")){
+                    Intent intent = new Intent(getApplicationContext(), direct_SplashActivity.class);
+                    startActivity(intent);
+                }else{
+                    ontact = 1;
+                    Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
+                    startActivity(intent);//작동x
+                }
+            }
+        });
+        //포장 비대면결제 클릭시
+        pack_untact_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(store_sale.equals("흥정 불가능")){
+                    Intent intent = new Intent(getApplicationContext(), card_Ready_SplashActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+        //포장 대면결제 클릭시
+        pack_ontact_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(store_sale.equals("흥정 불가능")){
+                    Intent intent = new Intent(getApplicationContext(), direct_SplashActivity.class);
+                    startActivity(intent);
+                }else{
+                    ontact = 1;
+                    Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
+                    startActivity(intent);//작동x
+                }
+            }
+        });
         home_Order_Iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

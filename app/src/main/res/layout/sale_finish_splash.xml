@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".SplashActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="장보"
+            android:textSize="55dp"
+            android:fontFamily="@font/basic_font"
+            android:textStyle="bold"
+            android:textColor="#A3000000"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go!"
+            android:fontFamily="@font/basic_font"
+            android:textSize="55dp"
+            android:textStyle="bold"
+            android:textColor="#FFC107"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="흥정에 성공하였습니다!"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/basic_font"
+        android:textColor="#000000"/>
+
+
+</LinearLayout>

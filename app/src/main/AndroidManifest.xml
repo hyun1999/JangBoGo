@@ -13,6 +13,24 @@
         android:theme="@style/Theme.Jangbogo"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".direct_SplashActivity"
+            android:exported="true" />
+        <activity
+            android:name=".pay_Question"
+            android:exported="true" />
+        <activity
+            android:name=".card_Finish_SplashActivity"
+            android:exported="true" />
+        <activity
+            android:name=".card_Ready_SplashActivity"
+            android:exported="true" />
+        <activity
+            android:name=".sale_Ready_SplashActivity"
+            android:exported="true" />
+        <activity
+            android:name=".sale_Finish_SplashActivity"
+            android:exported="true" />
+        <activity
             android:name=".OrderActivity"
             android:exported="true" />
         <activity
