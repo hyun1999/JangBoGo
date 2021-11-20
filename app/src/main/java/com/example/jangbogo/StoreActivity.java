@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -45,6 +46,19 @@ public class StoreActivity extends AppCompatActivity {
 
         getItemDetail();
         setItem();
+
+        //전화걸기 기능
+        store_tv_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String tel = "tel:" + item.getStore_phone();
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse(tel));
+                //Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse("tel:12345"));
+                startActivity(intent);
+            }
+        });
 
         //order버튼
         Order_tv.setOnClickListener(new View.OnClickListener() {
