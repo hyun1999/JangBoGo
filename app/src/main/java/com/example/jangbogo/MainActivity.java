@@ -16,12 +16,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
+import com.google.firebase.ktx.Firebase;
 
 import java.util.ArrayList;
 
@@ -103,9 +108,19 @@ public class MainActivity extends AppCompatActivity {
         board_Iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //게시판 버튼 기능
-                Intent intent = new Intent(getApplicationContext(), BoardActivity.class);
-                startActivity(intent);
+                String uid = FirebaseAuth.getInstance().getUid();
+                databaseReference.child(uid).child("sellNum").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        String sellNum = String.valueOf(task.getResult().getValue());
+                        if(sellNum.equals("null")){
+                            Toast.makeText(MainActivity.this, "판매자만 글쓰기가 가능합니다.", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Intent intent = new Intent(getApplicationContext(), BoardActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
     }
@@ -128,4 +143,5 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.removeAllViewsInLayout();
         recyclerView.setAdapter(resultAdapter);
     }
+
 }

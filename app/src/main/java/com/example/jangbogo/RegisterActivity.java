@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private EditText email_Et, password_Et, name_Et, phone_Et, sellnum_Et;
@@ -79,15 +80,18 @@ public class RegisterActivity extends AppCompatActivity {
                             String sellNum = sellnum_Et.getText().toString().trim();
 
                             //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
-                            HashMap<Object,String> hashMap = new HashMap<>();
+                            HashMap<Object, String> hashMap = new HashMap<>();
 
-                            hashMap.put("uid",uid);
+                            hashMap.put("uid", uid);
                             hashMap.put("email", email);
                             hashMap.put("password", password);
                             hashMap.put("name", name);
-                            hashMap.put("phone",phone);
-                            hashMap.put("sellNum",sellNum);
-
+                            hashMap.put("phone", phone);
+                            if (sellNum.equals("")) {
+                                hashMap.put("sellNum", "null");
+                            } else {
+                                hashMap.put("sellNum", sellNum);
+                            }
                             mDatabase.child(uid).setValue(hashMap);
 
                             Toast.makeText(RegisterActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
