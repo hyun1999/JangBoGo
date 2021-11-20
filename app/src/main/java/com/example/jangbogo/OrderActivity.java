@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +16,11 @@ public class OrderActivity extends AppCompatActivity {
     ImageView home_Order_Iv;
     private TextView Order_name_tv,store_tv_item,store_tv_sale,store_item_view,sale_price_tv,ship_untact_tv,ship_ontact_tv,pack_untact_tv,pack_ontact_tv;
     private EditText sale_price_et;
+    private EditText o_name;
+    private EditText o_phone;
+    private EditText o_address;
+    private EditText o_item;
+    private EditText o_price;
     private list item1;
     public static Context context_order;
     public int ontact = 0;
@@ -30,6 +36,12 @@ public class OrderActivity extends AppCompatActivity {
         store_item_view = (TextView) findViewById(R.id.store_item_view);
         sale_price_tv = (TextView) findViewById(R.id.sale_price_tv);
         sale_price_et = (EditText) findViewById(R.id.sale_price_et);
+
+        o_name = (EditText) findViewById(R.id.o_name);
+        o_phone = (EditText) findViewById(R.id.o_phone);
+        o_address = (EditText) findViewById(R.id.o_address);
+        o_item = (EditText) findViewById(R.id.o_item);
+        o_price = (EditText) findViewById(R.id.o_price);
 
         ship_untact_tv = (TextView) findViewById(R.id.ship_untact_tv);
         ship_ontact_tv = (TextView) findViewById(R.id.ship_ontact_tv);
@@ -61,12 +73,34 @@ public class OrderActivity extends AppCompatActivity {
         ship_untact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(store_sale.equals("흥정 불가능")){
-                    Intent intent = new Intent(getApplicationContext(), card_Ready_SplashActivity.class);
-                    startActivity(intent);
-                }else{
-                    Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
-                    startActivity(intent);
+
+                String name = o_name.getText().toString().trim();
+                String phone = o_phone.getText().toString().trim();
+                String address = o_address.getText().toString().trim();
+                String item = o_item.getText().toString().trim();
+                String price = o_price.getText().toString().trim();
+                if (!name.equals("") && !address.equals("") && !phone.equals("")
+                        && !address.equals("") && !item.equals("") && !price.equals("")) {
+                    // 모든 사항이 공백이 아닐경우
+                    if(store_sale.equals("흥정 불가능")){
+                        Intent intent = new Intent(getApplicationContext(), card_Ready_SplashActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
+                        startActivity(intent);
+                    }
+                } else if (name.equals("")) {
+                    Toast.makeText(OrderActivity.this, "이름을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (phone.equals("")) {
+                    Toast.makeText(OrderActivity.this, "전화번호를 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (address.equals("")) {
+                    Toast.makeText(OrderActivity.this, "주소를 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (item.equals("")) {
+                    Toast.makeText(OrderActivity.this, "구매하실 상품을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (price.equals("")) {
+                    Toast.makeText(OrderActivity.this, "가격을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(OrderActivity.this, "입력오류가 있습니다.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -74,13 +108,34 @@ public class OrderActivity extends AppCompatActivity {
         ship_ontact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(store_sale.equals("흥정 불가능")){
-                    Intent intent = new Intent(getApplicationContext(), direct_SplashActivity.class);
-                    startActivity(intent);
-                }else{
-                    ontact = 1;
-                    Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
-                    startActivity(intent);//작동x
+                String name = o_name.getText().toString().trim();
+                String phone = o_phone.getText().toString().trim();
+                String address = o_address.getText().toString().trim();
+                String item = o_item.getText().toString().trim();
+                String price = o_price.getText().toString().trim();
+                if (!name.equals("") && !address.equals("") && !phone.equals("")
+                        && !address.equals("") && !item.equals("") && !price.equals("")) {
+                    // 모든 사항이 공백이 아닐경우
+                    if(store_sale.equals("흥정 불가능")){
+                        Intent intent = new Intent(getApplicationContext(), direct_SplashActivity.class);
+                        startActivity(intent);
+                    }else{
+                        ontact = 1;
+                        Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
+                        startActivity(intent);
+                    }
+                } else if (name.equals("")) {
+                    Toast.makeText(OrderActivity.this, "이름을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (phone.equals("")) {
+                    Toast.makeText(OrderActivity.this, "전화번호를 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (address.equals("")) {
+                    Toast.makeText(OrderActivity.this, "주소를 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (item.equals("")) {
+                    Toast.makeText(OrderActivity.this, "구매하실 상품을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (price.equals("")) {
+                    Toast.makeText(OrderActivity.this, "가격을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(OrderActivity.this, "입력오류가 있습니다.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -88,12 +143,33 @@ public class OrderActivity extends AppCompatActivity {
         pack_untact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(store_sale.equals("흥정 불가능")){
-                    Intent intent = new Intent(getApplicationContext(), card_Ready_SplashActivity.class);
-                    startActivity(intent);
-                }else{
-                    Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
-                    startActivity(intent);
+                String name = o_name.getText().toString().trim();
+                String phone = o_phone.getText().toString().trim();
+                String address = o_address.getText().toString().trim();
+                String item = o_item.getText().toString().trim();
+                String price = o_price.getText().toString().trim();
+                if (!name.equals("") && !address.equals("") && !phone.equals("")
+                        && !address.equals("") && !item.equals("") && !price.equals("")) {
+                    // 모든 사항이 공백이 아닐경우
+                    if(store_sale.equals("흥정 불가능")){
+                        Intent intent = new Intent(getApplicationContext(), card_Ready_SplashActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
+                        startActivity(intent);
+                    }
+                } else if (name.equals("")) {
+                    Toast.makeText(OrderActivity.this, "이름을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (phone.equals("")) {
+                    Toast.makeText(OrderActivity.this, "전화번호를 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (address.equals("")) {
+                    Toast.makeText(OrderActivity.this, "주소를 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (item.equals("")) {
+                    Toast.makeText(OrderActivity.this, "구매하실 상품을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (price.equals("")) {
+                    Toast.makeText(OrderActivity.this, "가격을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(OrderActivity.this, "입력오류가 있습니다.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -101,13 +177,34 @@ public class OrderActivity extends AppCompatActivity {
         pack_ontact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(store_sale.equals("흥정 불가능")){
-                    Intent intent = new Intent(getApplicationContext(), direct_SplashActivity.class);
-                    startActivity(intent);
-                }else{
-                    ontact = 1;
-                    Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
-                    startActivity(intent);//작동x
+                String name = o_name.getText().toString().trim();
+                String phone = o_phone.getText().toString().trim();
+                String address = o_address.getText().toString().trim();
+                String item = o_item.getText().toString().trim();
+                String price = o_price.getText().toString().trim();
+                if (!name.equals("") && !address.equals("") && !phone.equals("")
+                        && !address.equals("") && !item.equals("") && !price.equals("")) {
+                    // 모든 사항이 공백이 아닐경우
+                    if(store_sale.equals("흥정 불가능")){
+                        Intent intent = new Intent(getApplicationContext(), direct_SplashActivity.class);
+                        startActivity(intent);
+                    }else{
+                        ontact = 1;
+                        Intent intent = new Intent(getApplicationContext(), sale_Ready_SplashActivity.class);
+                        startActivity(intent);//작동x
+                    }
+                } else if (name.equals("")) {
+                    Toast.makeText(OrderActivity.this, "이름을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (phone.equals("")) {
+                    Toast.makeText(OrderActivity.this, "전화번호를 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (address.equals("")) {
+                    Toast.makeText(OrderActivity.this, "주소를 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (item.equals("")) {
+                    Toast.makeText(OrderActivity.this, "구매하실 상품을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else if (price.equals("")) {
+                    Toast.makeText(OrderActivity.this, "가격을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(OrderActivity.this, "입력오류가 있습니다.", Toast.LENGTH_LONG).show();
                 }
             }
         });
