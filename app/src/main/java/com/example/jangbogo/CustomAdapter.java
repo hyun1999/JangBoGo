@@ -40,6 +40,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.tv_name.setText(arrayList.get(position).getStore_name());
         holder.tv_intro.setText(arrayList.get(position).getStore_intro());
         holder.tv_sale.setText(arrayList.get(position).getStore_sale());
+        holder.tv_sell_point.setText(arrayList.get(position).getStore_sell());
     }
 
     @Override
@@ -56,6 +57,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         public TextView tv_name;
         public TextView tv_intro;
         public TextView tv_sale;
+        public TextView tv_sell_point;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +65,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             this.tv_name = (TextView) itemView.findViewById(R.id.tv_name);
             this.tv_intro = (TextView) itemView.findViewById(R.id.tv_intro);
             this.tv_sale = (TextView) itemView.findViewById(R.id.tv_sale);
+            this.tv_sell_point = (TextView) itemView.findViewById(R.id.tv_sell_point);
         }
 
         //아이템 클릭시 화면 전환
