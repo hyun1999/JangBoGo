@@ -40,7 +40,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.tv_name.setText(arrayList.get(position).getStore_name());
         holder.tv_intro.setText(arrayList.get(position).getStore_intro());
         holder.tv_sale.setText(arrayList.get(position).getStore_sale());
-        holder.tv_sell_point.setText(arrayList.get(position).getStore_sell());
+        holder.tv_sell_point.setText("판매수: " + arrayList.get(position).getStore_sell());
     }
 
     @Override
