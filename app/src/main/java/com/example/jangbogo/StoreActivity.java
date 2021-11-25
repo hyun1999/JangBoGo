@@ -26,6 +26,7 @@ public class StoreActivity extends AppCompatActivity {
     private TextView store_tv_name, store_tv_intro, store_tv_item, store_tv_address, store_tv_phone, store_tv_time, store_tv_sale, Order_tv;
     private FirebaseDatabase database;
     private list item;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class StoreActivity extends AppCompatActivity {
                 intent.putExtra("store_name", item.getStore_name());
                 intent.putExtra("store_item", item.getStore_item());
                 intent.putExtra("store_sale", item.getStore_sale());
+                intent.putExtra("uid", uid);
                 startActivity(intent);
             }
         });
@@ -92,6 +94,9 @@ public class StoreActivity extends AppCompatActivity {
             if (obj != null && obj instanceof list) {
                 this.item = (list) obj;
             }
+            Object bldUid = bld.get("uid");
+            this.uid = String.valueOf(bldUid);
+
         }
     }
 

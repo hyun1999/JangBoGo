@@ -10,6 +10,7 @@ public class list implements Serializable {
     private String store_phone;
     private String store_time;
     private String store_sale;
+    private String store_sell;
 
 
     public list() {
@@ -70,5 +71,14 @@ public class list implements Serializable {
     public void setStore_sale(String store_sale) {
         this.store_sale = store_sale;
     }
+
+    public String getStore_sell() {
+        return store_sell;
+    }
+
+    public void setStore_sell(String store_sell) {
+        this.store_sell = store_sell;
+    }
+
 
 }

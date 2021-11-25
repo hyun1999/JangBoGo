@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class OrderActivity extends AppCompatActivity {
     ImageView home_Order_Iv;
     private DatabaseReference mDatabase;
@@ -74,6 +76,9 @@ public class OrderActivity extends AppCompatActivity {
         String store_name = intent.getStringExtra("store_name");
         String store_item = intent.getStringExtra("store_item");
         String store_sale = intent.getStringExtra("store_sale");
+        String store_sell = intent.getStringExtra("store_sell");
+        String sellerUid = intent.getStringExtra("uid");
+
 
         Order_name_tv.setText(store_name);
         store_item_view.setText(store_item);
@@ -95,6 +100,7 @@ public class OrderActivity extends AppCompatActivity {
         ship_untact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                plus_sell(sellerUid);
 
                 String name = o_name.getText().toString().trim();
                 String phone = o_phone.getText().toString().trim();
@@ -289,6 +295,22 @@ public class OrderActivity extends AppCompatActivity {
                 }
                 else {
                     o_phone.setText(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
+    }
+    // 판매수 증가
+    public void plus_sell(String uid){
+        mDatabase.child(uid).child("Board").child("store_sell").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting store_sell", task.getException());
+                }
+                else {
+                    int sellpoint = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                    sellpoint = sellpoint + 1;
+                    mDatabase.child(uid).child("Board/store_sell").setValue(String.valueOf(sellpoint));
                 }
             }
         });

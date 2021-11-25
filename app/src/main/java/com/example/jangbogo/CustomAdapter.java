@@ -17,11 +17,13 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
     private ArrayList<list> arrayList;
+    private ArrayList<String> uidList;
     private Context context;
     public static final int sub = 1001; /*다른 액티비티를 띄우기 위한 요청코드(상수)*/
 
-    public CustomAdapter(ArrayList<list> arrayList, Context context) {
+    public CustomAdapter(ArrayList<list> arrayList, ArrayList<String> uidList, Context context) {
         this.arrayList = arrayList;
+        this.uidList = uidList;
         this.context = context;
     }
 
@@ -70,6 +72,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
             Intent intent = new Intent(v.getContext(), StoreActivity.class);
             intent.putExtra("item", getItem(pos));
+            intent.putExtra("uid", uidList.get(pos));
             v.getContext().startActivity(intent);
         }
     }

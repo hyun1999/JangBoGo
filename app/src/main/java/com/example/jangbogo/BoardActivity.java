@@ -91,11 +91,12 @@ public class BoardActivity extends AppCompatActivity {
                 String store_intro = store_intro_Et.getText().toString().trim();
                 String store_item = store_item_Et.getText().toString().trim();
                 String store_time = store_time_Et.getText().toString().trim();
+                String store_sell = "0";
                 String store_sale = resultText;
                 if (!store_name.equals("") && !store_address.equals("") && !store_phone.equals("")
                         && !store_intro.equals("") && !store_item.equals("") && !store_time.equals("")) {
                     // 모든 사항이 공백이 아닐경우
-                    createPost(store_name, store_address, store_phone, store_intro, store_item, store_time, store_sale);
+                    createPost(store_name, store_address, store_phone, store_intro, store_item, store_time, store_sale, store_sell);
                 } else if (store_name.equals("")) {
                     // 가게 이름이 공백인 경우
                     Toast.makeText(BoardActivity.this, "가게이름을 입력하세요.", Toast.LENGTH_LONG).show();
@@ -122,7 +123,7 @@ public class BoardActivity extends AppCompatActivity {
         });
     }
 
-    private void createPost(String store_name, String store_address, String store_phone, String store_intro, String store_item, String store_time, String store_sale) {
+    private void createPost(String store_name, String store_address, String store_phone, String store_intro, String store_item, String store_time, String store_sale, String store_sell) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
         DatabaseReference mData = FirebaseDatabase.getInstance().getReference("Users");
@@ -161,6 +162,7 @@ public class BoardActivity extends AppCompatActivity {
                         hashMap.put("store_intro", store_intro);
                         hashMap.put("store_item", store_item);
                         hashMap.put("store_time", store_time);
+                        hashMap.put("store_sell", store_sell);
                         if(store_sale =="true"){
                             hashMap.put("store_sale", "흥정 가능");
                         } else{

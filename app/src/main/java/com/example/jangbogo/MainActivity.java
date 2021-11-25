@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<list> arrayList;
     private ArrayList<list> resultList;
+    private ArrayList<String> uidList;
     private FirebaseDatabase database;
     private Button mSearchBtn;
     private EditText mSearchField;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>(); //list 객체를 담을 어레이 리스트
+        uidList = new ArrayList<>(); //list 객체를 담을 어레이 리스트
 
         mSearchField = (EditText) findViewById(R.id.edit_search);
         mSearchBtn = (Button) findViewById(R.id.search_btn);
@@ -74,10 +76,13 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //파이어베이스 데이터베이스의 데이터를 받아오는곳
                 arrayList.clear(); //초기화
+                uidList.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     list List = snapshot1.child("Board").getValue(list.class); //만들어뒀던 list 객체에 데이터 담기
+                    String uid = snapshot1.child("uid").getValue().toString();
                     if (List != null) {
                         arrayList.add(List); //담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼준비
+                        uidList.add(uid);
                         i = 0;
                     }
                 }
@@ -90,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new CustomAdapter(arrayList, this);
+        adapter = new CustomAdapter(arrayList, uidList, this);
         recyclerView.setAdapter(adapter);
 
 
@@ -140,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        CustomAdapter resultAdapter = new CustomAdapter(resultList, this);
+        CustomAdapter resultAdapter = new CustomAdapter(resultList, uidList, this);
         recyclerView.removeAllViewsInLayout();
         recyclerView.setAdapter(resultAdapter);
     }
