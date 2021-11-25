@@ -136,6 +136,8 @@ public class OrderActivity extends AppCompatActivity {
         ship_ontact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                plus_sell(sellerUid);
+
                 String name = o_name.getText().toString().trim();
                 String phone = o_phone.getText().toString().trim();
                 String address = o_address.getText().toString().trim();
@@ -171,6 +173,8 @@ public class OrderActivity extends AppCompatActivity {
         pack_untact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                plus_sell(sellerUid);
+
                 String name = o_name.getText().toString().trim();
                 String phone = o_phone.getText().toString().trim();
                 String address = o_address.getText().toString().trim();
@@ -205,6 +209,8 @@ public class OrderActivity extends AppCompatActivity {
         pack_ontact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                plus_sell(sellerUid);
+
                 String name = o_name.getText().toString().trim();
                 String phone = o_phone.getText().toString().trim();
                 String address = o_address.getText().toString().trim();
