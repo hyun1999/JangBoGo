@@ -1,10 +1,12 @@
 package com.example.jangbogo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -12,8 +14,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class OrderActivity extends AppCompatActivity {
     ImageView home_Order_Iv;
+    private DatabaseReference mDatabase;
+    private FirebaseAuth firebaseAuth;
     private TextView Order_name_tv,store_tv_item,store_tv_sale,store_item_view,sale_price_tv,ship_untact_tv,ship_ontact_tv,pack_untact_tv,pack_ontact_tv;
     private EditText sale_price_et;
     private EditText o_name;
@@ -29,6 +43,9 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order);
+
+        firebaseAuth = FirebaseAuth.getInstance(); //접근권한
+        mDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
         Order_name_tv = (TextView) findViewById(R.id.Order_name_tv);
         store_tv_item = (TextView) findViewById(R.id.store_tv_item);
@@ -68,6 +85,11 @@ public class OrderActivity extends AppCompatActivity {
         if(store_sale.equals("흥정 불가능")){
             sale_price_et.setVisibility(View.GONE);
         }
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        String uid = user.getUid();
+        getNameAndPhone(uid);
+
 
         //배달 비대면결제 클릭시
         ship_untact_tv.setOnClickListener(new View.OnClickListener() {
@@ -244,5 +266,31 @@ public class OrderActivity extends AppCompatActivity {
                 store_tv_sale.setText(sale);
             }
         }
+    }
+
+    public void getNameAndPhone(String uid){
+        mDatabase.child(uid).child("name").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting name", task.getException());
+                }
+                else {
+                    o_name.setText(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
+
+        mDatabase.child(uid).child("phone").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting phone", task.getException());
+                }
+                else {
+                    o_phone.setText(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
     }
 }

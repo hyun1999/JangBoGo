@@ -127,7 +127,6 @@ public class BoardActivity extends AppCompatActivity {
         String uid = user.getUid();
         DatabaseReference mData = FirebaseDatabase.getInstance().getReference("Users");
         String sellNum = String.valueOf(mData.child(uid).child("sellNum").getDatabase());
-        Toast.makeText(BoardActivity.this, "sellNum: " + sellNum, Toast.LENGTH_SHORT).show();
 
         mData.child(uid).addValueEventListener(new ValueEventListener() {
             @Override

@@ -48,7 +48,7 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        //로그인t 버튼이 눌리면
+        //로그인 버튼이 눌리면
         mLoginBtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -68,8 +68,6 @@ public class loginActivity extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(intent);
                                     }
-
-
                                 }else{
                                     Toast.makeText(loginActivity.this,"로그인 오류",Toast.LENGTH_SHORT).show();
                                 }

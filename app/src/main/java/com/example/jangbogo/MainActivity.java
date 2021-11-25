@@ -127,10 +127,11 @@ public class MainActivity extends AppCompatActivity {
 
     //검색기능(순차 탐색)
     private void search(String searchText) {
-        Toast.makeText(getApplicationContext(), "search", Toast.LENGTH_SHORT).show();
         resultList = new ArrayList<>();
+        // 문자 입력이 없을때는 모든 데이터를 보여준다
         if (searchText.length() == 0) {
             resultList.addAll(arrayList);
+            // 문자 입력을 할때
         } else {
             for (list List : arrayList) {
                 if (List.getStore_name().contains(searchText)) {
