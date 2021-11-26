@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/reviewText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/yellow_radius"
+        android:fontFamily="@font/baemin"
+        android:gravity="center"
+        android:text="리뷰작성"
+        android:textSize="20dp"></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:weightSum="10">
+        <EditText
+            android:id="@+id/titleEdit"
+            android:layout_width="185dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:hint="제목"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:layout_marginLeft="20dp"
+            android:maxLines="10"
+            android:minLines="5"
+            android:scrollbars="vertical"></EditText>
+
+    </LinearLayout>
+
+
+    <RatingBar
+        android:id="@+id/reviewRating"
+        style="?android:attr/ratingBarStyleIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:isIndicator="false"
+        android:max="5"
+        android:numStars="5"
+        android:rating="3"
+        android:stepSize="0.5"></RatingBar>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="솔직한 리뷰를 작성 해 주세요!"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/reviewEdit"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@null"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"></EditText>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        >
+        <TextView
+            android:id="@+id/cancel_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_weight="5"
+            android:text="취소"
+            android:background="@drawable/yellow_radius2"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/ok_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_weight="5"
+            android:text="확인"
+            android:background="@drawable/yellow_radius2"
+            >
+        </TextView>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/textView_result" />
+</LinearLayout>

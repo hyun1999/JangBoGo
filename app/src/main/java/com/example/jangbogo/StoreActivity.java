@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 public class StoreActivity extends AppCompatActivity {
     ImageView home_intro_Iv;
 
-    private TextView store_tv_name, store_tv_intro, store_tv_item, store_tv_address, store_tv_phone, store_tv_time, store_tv_sale, Order_tv;
+    private TextView store_tv_name, store_tv_intro, store_tv_item, store_tv_address, store_tv_phone, store_tv_time, store_tv_sale, Order_tv, Review_write_tv, Review_view_tv;
     private FirebaseDatabase database;
     private list item;
     private String uid;
@@ -41,6 +42,8 @@ public class StoreActivity extends AppCompatActivity {
         store_tv_time = (TextView) findViewById(R.id.store_tv_time);
         store_tv_sale = (TextView) findViewById(R.id.store_tv_sale);
         Order_tv = (TextView) findViewById(R.id.Order_tv);
+        Review_write_tv = (TextView) findViewById(R.id.Review_write_tv);
+        Review_view_tv = (TextView) findViewById(R.id.Review_write_tv);
 
         database = FirebaseDatabase.getInstance();//파이어베이스 데이터베이스 연동
         DatabaseReference databaseReference = database.getReference("Users");
@@ -69,6 +72,27 @@ public class StoreActivity extends AppCompatActivity {
                 intent.putExtra("store_name", item.getStore_name());
                 intent.putExtra("store_item", item.getStore_item());
                 intent.putExtra("store_sale", item.getStore_sale());
+                intent.putExtra("uid", uid);
+                startActivity(intent);
+            }
+        });
+        //후기보기 버튼
+//        Review_view_tv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+//                intent.putExtra("store_name", item.getStore_name());
+//                intent.putExtra("store_item", item.getStore_item());
+//                intent.putExtra("store_sale", item.getStore_sale());
+//                intent.putExtra("uid", uid);
+//                startActivity(intent);
+//            }
+//        });
+        //후기작성 버튼
+        Review_write_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
                 intent.putExtra("uid", uid);
                 startActivity(intent);
             }
