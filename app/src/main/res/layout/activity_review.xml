@@ -70,24 +70,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="10">
-
-        <TextView
-            android:id="@+id/cancel_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_weight="5"
-            android:background="@drawable/yellow_radius2"
-            android:fontFamily="@font/baemin"
-            android:gravity="center"
-            android:text="취소"></TextView>
+        android:weightSum="10"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/ok_tv"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_weight="5"
-            android:background="@drawable/yellow_radius2"
+            android:background="@drawable/yellow_radius"
             android:fontFamily="@font/baemin"
             android:gravity="center"
             android:text="확인"></TextView>

@@ -13,9 +13,12 @@
         android:theme="@style/Theme.Jangbogo"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".View_Review_Activity"
+            android:exported="true" />
+        <activity
             android:name=".ReviewActivity"
             android:exported="true"
-            android:parentActivityName=".StoreActivity"/>
+            android:parentActivityName=".StoreActivity" />
         <activity
             android:name=".direct_SplashActivity"
             android:exported="true" />
@@ -63,6 +66,5 @@
             android:name=".MainActivity"
             android:exported="true" />
     </application>
-
 
 </manifest>

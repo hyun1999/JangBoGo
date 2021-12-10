@@ -3,6 +3,7 @@ package com.example.jangbogo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,7 @@ public class ReviewActivity extends AppCompatActivity {
     private EditText reviewEdit;
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
-    private TextView cancel_tv, ok_tv;
+    private TextView ok_tv;
     String store_uid, review_count;
 
     @Override
@@ -44,7 +45,6 @@ public class ReviewActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
         ok_tv = (TextView) findViewById(R.id.ok_tv);
-        cancel_tv = (TextView) findViewById(R.id.cancel_tv);
         titleEdit = (EditText) findViewById(R.id.titleEdit);
         reviewRating = (RatingBar) findViewById(R.id.reviewRating);
         reviewEdit = (EditText) findViewById(R.id.reviewEdit);
@@ -54,14 +54,6 @@ public class ReviewActivity extends AppCompatActivity {
         store_uid = intent.getStringExtra("store_uid");
         review_count = intent.getStringExtra("review_count");
 
-        cancel_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //홈버튼 기능
-                Intent intent = new Intent(getApplicationContext(), StoreActivity.class);
-                startActivity(intent);
-            }
-        });
 
         ok_tv.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,6 +2,7 @@ package com.example.jangbogo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -68,17 +69,15 @@ public class StoreActivity extends AppCompatActivity {
             }
         });
         //후기보기 버튼
-//        Review_view_tv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
-//                intent.putExtra("store_name", item.getStore_name());
-//                intent.putExtra("store_item", item.getStore_item());
-//                intent.putExtra("store_sale", item.getStore_sale());
-//                intent.putExtra("uid", uid);
-//                startActivity(intent);
-//            }
-//        });
+        Review_view_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), View_Review_Activity.class);
+                intent.putExtra("store_uid", store_uid);
+                intent.putExtra("store_name", item.getStore_name());
+                startActivity(intent);
+            }
+        });
         //후기작성 버튼
         Review_write_tv.setOnClickListener(new View.OnClickListener() {
             @Override
