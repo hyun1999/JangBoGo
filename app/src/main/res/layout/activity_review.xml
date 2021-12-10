@@ -60,11 +60,11 @@
         android:id="@+id/reviewEdit"
         android:layout_width="match_parent"
         android:layout_height="480dp"
+        android:layout_marginLeft="20dp"
         android:background="@null"
         android:hint="솔직한 리뷰를 작성 해 주세요!"
         android:inputType="textMultiLine"
         android:scrollbars="vertical"></EditText>
-
 
     <LinearLayout
         android:layout_width="match_parent"
