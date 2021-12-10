@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="#FFFFFF"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
 
 
     <TextView
@@ -22,18 +22,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="20dp"
+        android:orientation="horizontal"
         android:weightSum="10">
+
         <EditText
             android:id="@+id/titleEdit"
             android:layout_width="185dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
             android:background="@null"
             android:hint="제목"
             android:inputType="textMultiLine"
             android:lines="8"
-            android:layout_marginLeft="20dp"
             android:maxLines="10"
             android:minLines="5"
             android:scrollbars="vertical"></EditText>
@@ -52,7 +53,7 @@
         android:max="5"
         android:numStars="5"
         android:rating="3"
-        android:stepSize="0.5"></RatingBar>
+        android:stepSize="1"></RatingBar>
 
 
     <EditText
@@ -65,38 +66,36 @@
         android:scrollbars="vertical"></EditText>
 
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="10"
-        >
+        android:weightSum="10">
+
         <TextView
             android:id="@+id/cancel_tv"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:gravity="center"
             android:layout_weight="5"
-            android:text="취소"
             android:background="@drawable/yellow_radius2"
-            >
-        </TextView>
+            android:fontFamily="@font/baemin"
+            android:gravity="center"
+            android:text="취소"></TextView>
+
         <TextView
             android:id="@+id/ok_tv"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:gravity="center"
             android:layout_weight="5"
-            android:text="확인"
             android:background="@drawable/yellow_radius2"
-            >
-        </TextView>
+            android:fontFamily="@font/baemin"
+            android:gravity="center"
+            android:text="확인"></TextView>
 
     </LinearLayout>
+
     <TextView
+        android:id="@+id/textView_result"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/textView_result" />
+        android:layout_height="50dp" />
 </LinearLayout>

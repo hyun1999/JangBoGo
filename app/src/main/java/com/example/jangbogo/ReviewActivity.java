@@ -46,14 +46,13 @@ public class ReviewActivity extends AppCompatActivity {
         ok_tv = (TextView) findViewById(R.id.ok_tv);
         cancel_tv = (TextView) findViewById(R.id.cancel_tv);
         titleEdit = (EditText) findViewById(R.id.titleEdit);
-//        reviewRating = (RatingBar) findViewById(R.id.reviewRating);
+        reviewRating = (RatingBar) findViewById(R.id.reviewRating);
         reviewEdit = (EditText) findViewById(R.id.reviewEdit);
 
 
         Intent intent = getIntent();
         store_uid = intent.getStringExtra("store_uid");
         review_count = intent.getStringExtra("review_count");
-
 
         cancel_tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,10 +68,11 @@ public class ReviewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String re_title = titleEdit.getText().toString().trim();
                 String re_review = reviewEdit.getText().toString().trim();
+                int re_rating = (int) reviewRating.getRating();
 
                 if (!re_title.equals("") && !re_review.equals("")) {
-//                    // 모든 사항이 공백이 아닐경우
-                    createReview(re_title, re_review);
+                    // 모든 사항이 공백이 아닐경우
+                    createReview(re_title, re_review, String.valueOf(re_rating));
                 } else if (re_title.equals("")) {
                     // 제목이 공백인 경우
                     Toast.makeText(ReviewActivity.this, "제목을 입력하세요.", Toast.LENGTH_LONG).show();
@@ -84,7 +84,7 @@ public class ReviewActivity extends AppCompatActivity {
         });
     }
 
-    private void createReview(String re_title, String re_review) {
+    private void createReview(String re_title, String re_review, String re_rating) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
 
@@ -92,7 +92,7 @@ public class ReviewActivity extends AppCompatActivity {
         hashMap.put("user_uid", uid);
         hashMap.put("re_title", re_title);
         hashMap.put("re_review", re_review);
-        //별 추가 hashMap.put("별", 별);
+        hashMap.put("re_rating", re_rating);
 
 
 
