@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     private Button mSearchBtn;
     private EditText mSearchField;
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-    private DatabaseReference resultRef = FirebaseDatabase.getInstance().getReference("Users/Board");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

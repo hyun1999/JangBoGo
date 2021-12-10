@@ -102,8 +102,8 @@ public class ReviewActivity extends AppCompatActivity {
         });
 
         Toast.makeText(ReviewActivity.this, "review 작성 성공", Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(ReviewActivity.this, StoreActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(ReviewActivity.this, StoreActivity.class);
+        startActivity(intent);
         finish();
 
     }
