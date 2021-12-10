@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Jangbogo"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".Review_Store"
+            android:exported="true" />
         <activity
             android:name=".View_Review_Activity"
             android:exported="true" />
@@ -56,8 +58,7 @@
             android:exported="true" />
         <activity
             android:name=".loginActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

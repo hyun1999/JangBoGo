@@ -2,6 +2,7 @@ package com.example.jangbogo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +15,13 @@ import java.util.ArrayList;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder> {
     private ArrayList<review> arrayList;
+    private ArrayList<String> uidList;
     private Context context;
     public static final int sub = 1001; /*다른 액티비티를 띄우기 위한 요청코드(상수)*/
 
     public ReviewAdapter(ArrayList<review> arrayList, Context context) {
         this.arrayList = arrayList;
+        this.uidList = uidList;
         this.context = context;
     }
 
@@ -65,10 +68,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
         public void onClick(View v) {
             int pos = getAdapterPosition();
 
-//            intent intent = new intent(v.getcontext(), storeactivity.class);
-//            intent.putextra("item", getitem(pos));
-//            intent.putextra("uid", uidlist.get(pos));
-//            v.getcontext().startactivity(intent);
+            Intent intent = new Intent(v.getContext(), Review_Store.class);
+            v.getContext().startActivity(intent);
         }
     }
 }
