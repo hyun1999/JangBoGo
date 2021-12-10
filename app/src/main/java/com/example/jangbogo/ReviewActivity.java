@@ -4,13 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Rating;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firestore.v1.StructuredQuery;
 
 import java.util.HashMap;
 
@@ -35,6 +33,7 @@ public class ReviewActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
     private TextView cancel_tv, ok_tv;
+    String store_uid, review_count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,12 @@ public class ReviewActivity extends AppCompatActivity {
         titleEdit = (EditText) findViewById(R.id.titleEdit);
 //        reviewRating = (RatingBar) findViewById(R.id.reviewRating);
         reviewEdit = (EditText) findViewById(R.id.reviewEdit);
+
+
+        Intent intent = getIntent();
+        store_uid = intent.getStringExtra("store_uid");
+        review_count = intent.getStringExtra("review_count");
+
 
         cancel_tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +72,7 @@ public class ReviewActivity extends AppCompatActivity {
 
                 if (!re_title.equals("") && !re_review.equals("")) {
 //                    // 모든 사항이 공백이 아닐경우
-                    createPost(re_title, re_review);
+                    createReview(re_title, re_review);
                 } else if (re_title.equals("")) {
                     // 제목이 공백인 경우
                     Toast.makeText(ReviewActivity.this, "제목을 입력하세요.", Toast.LENGTH_LONG).show();
@@ -79,52 +84,35 @@ public class ReviewActivity extends AppCompatActivity {
         });
     }
 
-    private void createPost(String re_title, String re_review) {
+    private void createReview(String re_title, String re_review) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String uid = user.getUid();
-        DatabaseReference mData = FirebaseDatabase.getInstance().getReference("Users");
-        String sellNum = String.valueOf(mData.child(uid).child("sellNum").getDatabase());
 
-        mData.child(uid).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snap : snapshot.getChildren()) {
+        HashMap<Object, String> hashMap = new HashMap<>();
+        hashMap.put("user_uid", uid);
+        hashMap.put("re_title", re_title);
+        hashMap.put("re_review", re_review);
+        //별 추가 hashMap.put("별", 별);
 
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-        mData.child(uid).child("sellNum").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child(store_uid).child("Board").child("review_count").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
+                    Log.e("firebase", "Error getting store_sell", task.getException());
                 } else {
-                    //sellNum[0] = String.valueOf(task.getResult().getValue());
-
-                    //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
-                    HashMap<Object, String> hashMap = new HashMap<>();
-
-                    hashMap.put("title", re_title);
-                    hashMap.put("review ", re_review);
-
-                    //
-                    mDatabase.child(uid).setValue(hashMap);
-                    //
-
-                    Toast.makeText(ReviewActivity.this, "글 작성 성공", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ReviewActivity.this, MainActivity.class);
-                    startActivity(intent);
-
+                    int review_count = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                    mDatabase.child(store_uid).child("Board").child("Review").child(String.valueOf(review_count)).setValue(hashMap);
+                    mDatabase.child(store_uid).child("Board/review_count").setValue(String.valueOf(review_count+1));
                 }
             }
+        });
 
+        Toast.makeText(ReviewActivity.this, "review 작성 성공", Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent(ReviewActivity.this, StoreActivity.class);
+//        startActivity(intent);
+        finish();
 
-            });
-        }
     }
+}

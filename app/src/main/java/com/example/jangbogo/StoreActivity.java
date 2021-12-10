@@ -1,25 +1,16 @@
 package com.example.jangbogo;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class StoreActivity extends AppCompatActivity {
     ImageView home_intro_Iv;
@@ -27,7 +18,7 @@ public class StoreActivity extends AppCompatActivity {
     private TextView store_tv_name, store_tv_intro, store_tv_item, store_tv_address, store_tv_phone, store_tv_time, store_tv_sale, Order_tv, Review_write_tv, Review_view_tv;
     private FirebaseDatabase database;
     private list item;
-    private String uid;
+    private String store_uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +34,7 @@ public class StoreActivity extends AppCompatActivity {
         store_tv_sale = (TextView) findViewById(R.id.store_tv_sale);
         Order_tv = (TextView) findViewById(R.id.Order_tv);
         Review_write_tv = (TextView) findViewById(R.id.Review_write_tv);
-        Review_view_tv = (TextView) findViewById(R.id.Review_write_tv);
+        Review_view_tv = (TextView) findViewById(R.id.Review_view_tv);
 
         database = FirebaseDatabase.getInstance();//파이어베이스 데이터베이스 연동
         DatabaseReference databaseReference = database.getReference("Users");
@@ -72,7 +63,7 @@ public class StoreActivity extends AppCompatActivity {
                 intent.putExtra("store_name", item.getStore_name());
                 intent.putExtra("store_item", item.getStore_item());
                 intent.putExtra("store_sale", item.getStore_sale());
-                intent.putExtra("uid", uid);
+                intent.putExtra("store_uid", store_uid);
                 startActivity(intent);
             }
         });
@@ -93,7 +84,8 @@ public class StoreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
-                intent.putExtra("uid", uid);
+                intent.putExtra("store_uid", store_uid);
+                intent.putExtra("review_count", item.getReview_count());
                 startActivity(intent);
             }
         });
@@ -119,7 +111,7 @@ public class StoreActivity extends AppCompatActivity {
                 this.item = (list) obj;
             }
             Object bldUid = bld.get("uid");
-            this.uid = String.valueOf(bldUid);
+            this.store_uid = String.valueOf(bldUid);
 
         }
     }

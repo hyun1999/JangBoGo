@@ -77,7 +77,7 @@ public class OrderActivity extends AppCompatActivity {
         String store_item = intent.getStringExtra("store_item");
         String store_sale = intent.getStringExtra("store_sale");
         String store_sell = intent.getStringExtra("store_sell");
-        String sellerUid = intent.getStringExtra("uid");
+        String store_uid = intent.getStringExtra("store_uid");
 
 
         Order_name_tv.setText(store_name);
@@ -100,7 +100,7 @@ public class OrderActivity extends AppCompatActivity {
         ship_untact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                plus_sell(sellerUid);
+                plus_sell(store_uid);
 
                 String name = o_name.getText().toString().trim();
                 String phone = o_phone.getText().toString().trim();
@@ -136,7 +136,7 @@ public class OrderActivity extends AppCompatActivity {
         ship_ontact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                plus_sell(sellerUid);
+                plus_sell(store_uid);
 
                 String name = o_name.getText().toString().trim();
                 String phone = o_phone.getText().toString().trim();
@@ -173,7 +173,7 @@ public class OrderActivity extends AppCompatActivity {
         pack_untact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                plus_sell(sellerUid);
+                plus_sell(store_uid);
 
                 String name = o_name.getText().toString().trim();
                 String phone = o_phone.getText().toString().trim();
@@ -209,7 +209,7 @@ public class OrderActivity extends AppCompatActivity {
         pack_ontact_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                plus_sell(sellerUid);
+                plus_sell(store_uid);
 
                 String name = o_name.getText().toString().trim();
                 String phone = o_phone.getText().toString().trim();

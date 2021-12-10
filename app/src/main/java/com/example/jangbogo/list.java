@@ -11,6 +11,7 @@ public class list implements Serializable {
     private String store_time;
     private String store_sale;
     private String store_sell;
+    private String review_count;
 
 
     public list() {
@@ -78,6 +79,14 @@ public class list implements Serializable {
 
     public void setStore_sell(String store_sell) {
         this.store_sell = store_sell;
+    }
+
+    public String getReview_count() {
+        return review_count;
+    }
+
+    public void setReview_count(String review_count) {
+        this.review_count = review_count;
     }
 
 
