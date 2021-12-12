@@ -34,7 +34,7 @@ public class ReviewActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
     private TextView ok_tv;
-    String store_uid, review_count;
+    String store_uid, review_count, review_sum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +87,16 @@ public class ReviewActivity extends AppCompatActivity {
         hashMap.put("re_rating", re_rating);
 
 
+        mDatabase.child(store_uid).child("Board").child("review_sum").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting review sum", task.getException());
+                } else {
+                    review_sum = String.valueOf(task.getResult().getValue());
+                }
+            }
+        });
 
         mDatabase.child(store_uid).child("Board").child("review_count").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -95,14 +105,20 @@ public class ReviewActivity extends AppCompatActivity {
                     Log.e("firebase", "Error getting store_sell", task.getException());
                 } else {
                     int review_count = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                    int sum = Integer.parseInt(review_sum) + Integer.parseInt(re_rating);
+                    Log.v("sum", String.valueOf(sum));
+                    review_sum = String.valueOf(sum);
+
                     mDatabase.child(store_uid).child("Board").child("Review").child(String.valueOf(review_count)).setValue(hashMap);
                     mDatabase.child(store_uid).child("Board/review_count").setValue(String.valueOf(review_count+1));
+                    mDatabase.child(store_uid).child("Board/review_sum").setValue(review_sum);
                 }
             }
         });
 
+
+
         Toast.makeText(ReviewActivity.this, "review 작성 성공", Toast.LENGTH_SHORT).show();
         finish();
-
     }
 }

@@ -40,7 +40,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.tv_name.setText(arrayList.get(position).getStore_name());
         holder.tv_intro.setText(arrayList.get(position).getStore_intro());
         holder.tv_sale.setText(arrayList.get(position).getStore_sale());
-        holder.tv_sell_point.setText("판매수: " + arrayList.get(position).getStore_sell());
+        holder.tv_sell_point.setText("주문수: " + arrayList.get(position).getStore_sell());
+
+        double average = 0.0;
+        if(!arrayList.get(position).getReview_count().equals("0")){
+            average = Double.parseDouble(arrayList.get(position).getReview_sum()) / Double.parseDouble(arrayList.get(position).getReview_count());
+
+        }
+        holder.tv_star.setText("평점: " + String.format("%.1f", average));
     }
 
     @Override
@@ -58,6 +65,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         public TextView tv_intro;
         public TextView tv_sale;
         public TextView tv_sell_point;
+        public TextView tv_star;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +74,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             this.tv_intro = (TextView) itemView.findViewById(R.id.tv_intro);
             this.tv_sale = (TextView) itemView.findViewById(R.id.tv_sale);
             this.tv_sell_point = (TextView) itemView.findViewById(R.id.tv_sell_point);
+            this.tv_star = (TextView) itemView.findViewById(R.id.tv_star);
         }
 
         //아이템 클릭시 화면 전환

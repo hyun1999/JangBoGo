@@ -12,7 +12,7 @@ public class list implements Serializable {
     private String store_sale;
     private String store_sell;
     private String review_count;
-
+    private String review_sum;
 
     public list() {
     }
@@ -88,6 +88,15 @@ public class list implements Serializable {
     public void setReview_count(String review_count) {
         this.review_count = review_count;
     }
+
+    public String getReview_sum() {
+        return review_sum;
+    }
+
+    public void setReview_sum(String review_sum) {
+        this.review_sum = review_sum;
+    }
+
 
 
 }

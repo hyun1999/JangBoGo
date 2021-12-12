@@ -35,6 +35,10 @@
         <entry key="..\:/jangbogo/app/src/main/res/layout/sale_ready_splash.xml" value="0.24114583333333334" />
         <entry key="..\:/jangbogo/app/src/main/res/layout/sign_up.xml" value="0.2526041666666667" />
         <entry key="..\:/jangbogo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24814814814814815" />
+        <entry key="..\:/jangbogo4/app/src/main/res/layout/activity_review.xml" value="0.24114583333333334" />
+        <entry key="..\:/jangbogo4/app/src/main/res/layout/list_item.xml" value="0.4" />
+        <entry key="..\:/jangbogo4/app/src/main/res/layout/main.xml" value="0.12083333333333333" />
+        <entry key="..\:/jangbogo4/app/src/main/res/layout/review_item.xml" value="0.2" />
       </map>
     </option>
   </component>
