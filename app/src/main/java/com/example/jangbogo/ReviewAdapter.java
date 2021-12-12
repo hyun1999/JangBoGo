@@ -35,9 +35,10 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
 
     @Override
     public void onBindViewHolder(@NonNull ReviewViewHolder holder, int position) {
+
         holder.re_title.setText(arrayList.get(position).getRe_title());
         holder.re_review.setText(arrayList.get(position).getRe_review());
-        holder.re_rating.setText(arrayList.get(position).getRe_rating());
+        holder.re_rating.setText("평점: " + arrayList.get(position).getRe_rating());
     }
 
     @Override
@@ -50,26 +51,16 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
     }
 
 
-    public class ReviewViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ReviewViewHolder extends RecyclerView.ViewHolder{
 
         public TextView re_title, re_review, re_rating;
 
         public ReviewViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemView.setOnClickListener((View.OnClickListener) this);
+
             this.re_title = (TextView) itemView.findViewById(R.id.re_title);
             this.re_review = (TextView) itemView.findViewById(R.id.re_review);
             this.re_rating = (TextView) itemView.findViewById(R.id.re_rating);
-
-        }
-
-        //아이템 클릭시 화면 전환
-        @Override
-        public void onClick(View v) {
-            int pos = getAdapterPosition();
-
-            Intent intent = new Intent(v.getContext(), Review_Store.class);
-            v.getContext().startActivity(intent);
         }
     }
 }
